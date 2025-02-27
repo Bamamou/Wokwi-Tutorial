@@ -59,7 +59,16 @@
       "top": 80,
       "left": 250,
       "attrs": { "label": "Control Button" }
-    }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 160,
+      "left": 150,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": 50, "left": 350, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 100, "left": 350, "attrs": {} }
   ],
   "connections": [
     [ "esp:TX", "$serialMonitor:RX", "", [] ],
@@ -74,7 +83,11 @@
     [ "led4:A", "r3:1", "green", [ "v0" ] ],
     [ "r3:2", "esp:12", "green", [ "h0", "v27.6" ] ],
     [ "btn1:1.l", "esp:GND.2", "green", [ "v0" ] ],
-    [ "btn1:2.l", "esp:15", "green", [ "v0" ] ]
+    [ "btn1:2.l", "esp:15", "green", [ "v0" ] ],
+    [ "lcd1:GND", "gnd1:GND", "black", [] ],
+    [ "lcd1:VCC", "vcc1:VCC", "red", [] ],
+    [ "lcd1:SDA", "esp:21", "blue", [] ],
+    [ "lcd1:SCL", "esp:22", "yellow", [] ]
   ],
   "dependencies": {}
 }
