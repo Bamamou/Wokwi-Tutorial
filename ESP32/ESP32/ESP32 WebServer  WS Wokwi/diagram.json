@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "author": "Nicolas Bamamou",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": 89.4, "left": 191.1, "rotate": 90, "attrs": {} },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": 93.2,
+      "left": -198.8,
+      "rotate": 180,
+      "attrs": {}
+    },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 172.8, "left": 143.4, "attrs": {} },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": 96.76, "left": 144, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd2", "top": 192, "left": -29.4, "attrs": {} },
+    {
+      "type": "wokwi-lcd2004",
+      "id": "lcd1",
+      "top": -89.6,
+      "left": 159.2,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-gnd",
+      "id": "gnd3",
+      "top": -115.2,
+      "left": 124.2,
+      "rotate": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-vcc",
+      "id": "vcc2",
+      "top": -62.4,
+      "left": 120.96,
+      "rotate": 270,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "vcc1:VCC", "dht1:VCC", "red", [ "v0" ] ],
+    [ "dht1:GND", "gnd1:GND", "black", [ "h0" ] ],
+    [ "dht1:SDA", "esp:4", "green", [ "h0" ] ],
+    [ "servo1:PWM", "esp:12", "green", [ "h0" ] ],
+    [ "servo1:GND", "gnd2:GND", "black", [ "h0" ] ],
+    [ "servo1:V+", "esp:5V", "red", [ "h19.2", "v47.9" ] ],
+    [ "vcc2:VCC", "lcd1:VCC", "red", [ "v0" ] ],
+    [ "gnd3:GND", "lcd1:GND", "black", [ "v0" ] ],
+    [ "lcd1:SCL", "esp:22", "green", [ "h-38.4", "v67.5" ] ],
+    [ "lcd1:SDA", "esp:21", "green", [ "h-28.8", "v125" ] ]
+  ],
+  "dependencies": {}
+}

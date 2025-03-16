@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "author": "Nicolas Bamamou",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 9.6, "left": -43.16, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": -13.2, "left": 99.8, "attrs": { "color": "green" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 80.2,
+      "left": 104.75,
+      "rotate": 270,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 140.6,
+      "left": 105.6,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 201.6, "left": 85.8, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "btn1:1.l", "esp:4", "green", [ "h0" ] ],
+    [ "r1:2", "led1:A", "green", [ "h0", "v-18" ] ],
+    [ "r1:1", "esp:5", "green", [ "h0", "v19.2" ] ],
+    [ "esp:GND.2", "led1:C", "black", [ "v-9.6", "h38.4" ] ],
+    [ "gnd1:GND", "btn1:2.l", "black", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}

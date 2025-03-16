@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "author": "Nicolas Bamamou",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": -2.8,
+      "left": 24.56,
+      "rotate": 180,
+      "attrs": {}
+    },
+    { "type": "wokwi-rgb-led", "id": "rgb1", "top": -5.6, "left": 145.1, "attrs": { "common": "cathode"} },
+    {
+      "type": "wokwi-tm1637-7segment",
+      "id": "sevseg1",
+      "top": 28.76,
+      "left": -204.17,
+      "attrs": { "color": "red" }
+    },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 105.6, "left": -29.4, "attrs": {} },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": 114.24, "left": -9.4, "rotate": 180, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "gnd1:GND", "sevseg1:GND", "black", [ "v0" ] ],
+    [ "vcc1:VCC", "sevseg1:VCC", "red", [ "v0" ] ],
+    [ "sevseg1:CLK", "esp:2", "green", [ "h38.4", "v-19.2" ] ],
+    [ "sevseg1:DIO", "esp:4", "yellow", [ "h0" ] ],
+    [ "rgb1:R", "esp:27", "red", [ "v0" ] ],
+    [ "rgb1:G", "esp:26", "green", [ "v0" ] ],
+    [ "rgb1:B", "esp:25", "blue", [ "v0" ] ],
+    [ "esp:GND.1", "rgb1:COM", "black", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}

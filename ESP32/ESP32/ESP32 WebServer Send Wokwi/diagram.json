@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "author": "Nicolas Bamamou",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -19.2, "left": -43.16, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": 41.4, "left": 123.9, "rotate": 90, "attrs": {} },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": 39.16, "left": 86.4, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd2", "top": 134.4, "left": 85.8, "attrs": {} },
+    {
+      "type": "wokwi-lcd2004",
+      "id": "lcd1",
+      "top": -185.6,
+      "left": 101.6,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-vcc",
+      "id": "vcc2",
+      "top": -158.4,
+      "left": 53.76,
+      "rotate": 270,
+      "attrs": {}
+    },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": -200.2, "left": 67, "rotate": 180, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "dht1:SDA", "esp:5", "green", [ "h0" ] ],
+    [ "dht1:GND", "gnd2:GND", "black", [ "h0" ] ],
+    [ "dht1:VCC", "vcc1:VCC", "red", [ "h0" ] ],
+    [ "gnd1:GND", "lcd1:GND", "black", [ "v0" ] ],
+    [ "vcc2:VCC", "lcd1:VCC", "red", [ "v0" ] ],
+    [ "esp:21", "lcd1:SDA", "blue", [ "h19.2", "v-192.2" ] ],
+    [ "esp:22", "lcd1:SCL", "gold", [ "h38.4", "v-153.6", "h9.6" ] ]
+  ],
+  "dependencies": {}
+}

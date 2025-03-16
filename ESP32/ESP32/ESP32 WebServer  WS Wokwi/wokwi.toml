@@ -1,0 +1,16 @@
+[wokwi]
+version = 1
+elf = ".pio/build/esp32dev/firmware.elf"
+firmware = ".pio/build/esp32dev/firmware.bin"
+
+# WiFi Configuration
+[[wifi]]
+ssid = "Wokwi-GUEST"
+password = ""
+internet = true
+channel = 6    # Set WiFi channel to 6 for faster connection
+
+# Forward http://localhost:8180 to port 80 on the simulated ESP32:
+[[net.forward]]
+from = "localhost:8180"
+to = "target:80"
